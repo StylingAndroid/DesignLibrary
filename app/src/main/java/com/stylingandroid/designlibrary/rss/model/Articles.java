@@ -57,8 +57,4 @@ public class Articles implements Iterable<String> {
     public Article getArticle(String title) {
         return articles.get(title);
     }
-
-    public Article getFirst() {
-        return articles.get(titles.get(0));
-    }
 }

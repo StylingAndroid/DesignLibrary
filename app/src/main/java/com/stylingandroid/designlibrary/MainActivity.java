@@ -96,11 +96,11 @@ public class MainActivity extends AppCompatActivity implements ArticlesConsumer 
             menu.add(MENU_GROUP, item, item, articleTitle);
             if (item == 0) {
                 menu.getItem(0).setChecked(true);
+                setCurrentArticle(articles.getArticle(articleTitle));
             }
             item++;
         }
         menu.setGroupCheckable(MENU_GROUP, true, true);
-        setCurrentArticle(articles.getFirst());
     }
 
     @Override
