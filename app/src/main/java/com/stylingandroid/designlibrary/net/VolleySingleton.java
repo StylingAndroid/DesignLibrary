@@ -18,7 +18,7 @@ public final class VolleySingleton {
     private Context context;
 
     private VolleySingleton(Context context) {
-        this.context = context;
+        this.context = context.getApplicationContext();
         requestQueue = getRequestQueue();
     }
 
