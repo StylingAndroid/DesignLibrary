@@ -3,15 +3,18 @@ package com.stylingandroid.designlibrary;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.stylingandroid.designlibrary.rss.model.Article;
 import com.stylingandroid.designlibrary.rss.model.Articles;
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements ArticlesConsumer 
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     private Articles articles;
 
@@ -32,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements ArticlesConsumer 
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         setupToolbar();
         setupNavigationView();
@@ -115,5 +122,13 @@ public class MainActivity extends AppCompatActivity implements ArticlesConsumer 
 
     private void setCurrentArticle(Article article) {
         setTitle(article.getTitle());
+        ArticleViewPagerAdapter adapter = ArticleViewPagerAdapter.newInstance(getSupportFragmentManager(), this, article);
+        viewPager.setAdapter(adapter);
+        if (article.getPartsCount() <= 1) {
+            tabLayout.setVisibility(View.GONE);
+        } else {
+            tabLayout.setVisibility(View.VISIBLE);
+        }
+        tabLayout.setupWithViewPager(viewPager);
     }
 }
