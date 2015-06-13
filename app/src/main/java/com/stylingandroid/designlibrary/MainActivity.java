@@ -1,6 +1,7 @@
 package com.stylingandroid.designlibrary;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements ArticlesConsumer 
     private NavigationView navigationView;
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    private FloatingActionButton fab;
 
     private Articles articles;
 
@@ -39,10 +41,12 @@ public class MainActivity extends AppCompatActivity implements ArticlesConsumer 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         setupToolbar();
         setupNavigationView();
         setupDataFragment();
+        setupFab();
     }
 
     private void setupToolbar() {
@@ -80,6 +84,16 @@ public class MainActivity extends AppCompatActivity implements ArticlesConsumer 
         }
     }
 
+    private void setupFab() {
+        fab.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Snackbar.make(v, R.string.fab_press, Snackbar.LENGTH_LONG).show();
+                    }
+                });
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -112,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements ArticlesConsumer 
 
     @Override
     public void handleError(String message) {
-        Snackbar.make(drawerLayout, message, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(viewPager, message, Snackbar.LENGTH_LONG).show();
     }
 
     private void selectArticle(CharSequence title) {

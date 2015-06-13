@@ -4,4 +4,5 @@
   <string name="styling_android">Styling Android</string>
   <string name="feed_url">http://blog.stylingandroid.com/feed/</string>
   <string name="part_title">Part %1$d</string>
+  <string name="fab_press">Please do not press this button again</string>
 </resources>
