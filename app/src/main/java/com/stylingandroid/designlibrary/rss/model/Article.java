@@ -24,7 +24,15 @@ public class Article {
         parts.put(partNumber, part);
     }
 
-    public Item getPart(int partNumber) {
-        return parts.get(partNumber);
+    public int getPartsCount() {
+        return parts.size();
+    }
+
+    public int getPartNumber(int position) {
+        return parts.keyAt(position);
+    }
+
+    public Item getPartAtPosition(int position) {
+        return parts.valueAt(position);
     }
 }

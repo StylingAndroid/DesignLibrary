@@ -38,6 +38,7 @@ public class Articles implements Iterable<String> {
                 Article article = Article.newInstance(title);
                 articles.put(title, article);
                 titles.add(title);
+                article.addPart(0, item);
             }
         }
         Collections.sort(titles);
