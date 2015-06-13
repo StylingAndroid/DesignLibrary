@@ -25,7 +25,7 @@ public class DataFragment extends Fragment implements Response.Listener<Articles
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Context context = inflater.getContext();
+        Context context = inflater.getContext().getApplicationContext();
 
         initVolley(context);
         update();
