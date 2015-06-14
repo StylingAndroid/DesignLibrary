@@ -38,6 +38,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="end|bottom"
     android:layout_margin="16dp"
-    android:src="@drawable/ic_block" />
+    android:src="@drawable/ic_block"
+    app:borderWidth="0dp" />
 
 </android.support.design.widget.CoordinatorLayout>
